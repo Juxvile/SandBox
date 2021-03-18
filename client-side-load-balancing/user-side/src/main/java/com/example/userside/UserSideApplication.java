@@ -22,7 +22,6 @@ public class UserSideApplication {
 		this.restTemplate = restTemplate;
 	}
 
-	@LoadBalanced
 	@Bean
 	RestTemplate restTemplate(){
 		return new RestTemplate();
