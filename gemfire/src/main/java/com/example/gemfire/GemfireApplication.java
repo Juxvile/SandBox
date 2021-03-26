@@ -1,20 +1,27 @@
 package com.example.gemfire;
 
 import org.apache.geode.cache.client.ClientRegionShortcut;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.gemfire.CacheFactoryBean;
+import org.springframework.data.gemfire.cache.config.EnableGemfireCaching;
 import org.springframework.data.gemfire.config.annotation.ClientCacheApplication;
 import org.springframework.data.gemfire.config.annotation.EnableEntityDefinedRegions;
+import org.springframework.data.gemfire.config.annotation.EnableLogging;
 import org.springframework.data.gemfire.repository.config.EnableGemfireRepositories;
+
+import java.util.Properties;
 
 import static java.util.Arrays.asList;
 import static java.util.stream.StreamSupport.stream;
 
 @SpringBootApplication
-@ClientCacheApplication(name = "AccessingDataGemFireApplication")
+@ClientCacheApplication(name = "AccessingDataGemFireApplication",logLevel = "fatal")
 @EnableEntityDefinedRegions(basePackageClasses = Person.class, clientRegionShortcut = ClientRegionShortcut.LOCAL)
 @EnableGemfireRepositories
 public class GemfireApplication {
@@ -22,6 +29,7 @@ public class GemfireApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(GemfireApplication.class, args);
 	}
+
 
 	@Bean
 	ApplicationRunner run (PersonRepository personRepository){

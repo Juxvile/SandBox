@@ -3,6 +3,7 @@ package com.example.gemfire;
 import org.springframework.data.gemfire.repository.query.annotation.Trace;
 import org.springframework.data.repository.CrudRepository;
 
+
 public interface PersonRepository extends CrudRepository<Person,String> {
 
     @Trace

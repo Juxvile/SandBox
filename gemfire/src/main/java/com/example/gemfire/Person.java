@@ -1,6 +1,7 @@
 package com.example.gemfire;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
@@ -12,17 +13,12 @@ import java.io.Serializable;
 public class Person implements Serializable {
 
     @Id
+    @Getter
     private final String name;
 
+    @Getter
     private final int age;
 
-    public String getName() {
-        return name;
-    }
-
-    public int getAge() {
-        return age;
-    }
 
     @Override
     public String toString() {
