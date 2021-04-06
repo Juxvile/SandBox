@@ -29,4 +29,11 @@ public class User {
 
     private String phone;
 
+    private String facebookUrl;
+
+    private String twitterUrl;
+
+    private String skypeUrl;
+
+
 }
